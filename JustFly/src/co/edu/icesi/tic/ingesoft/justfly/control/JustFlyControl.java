@@ -102,7 +102,8 @@ public class JustFlyControl {
 	/**
 	 * Main method.
 	 * 
-	 * @param args Arguments.
+	 * @param args
+	 *            Arguments.
 	 */
 	public static void main(String[] args) {
 		ActiveGame = true;
@@ -199,8 +200,8 @@ public class JustFlyControl {
 	/**
 	 * Allows to manage the control panel events.
 	 * 
-	 * @return an ActionListener instance that allows to manage the control panel
-	 *         events.
+	 * @return an ActionListener instance that allows to manage the control
+	 *         panel events.
 	 */
 	private static ActionListener managePanelEvents() {
 		return new ActionListener() {
@@ -252,16 +253,20 @@ public class JustFlyControl {
 					break;
 
 				case PanelWindow.BUTTON_7_NAME:
-					
+
 					manageShapesActivation(VisualSettings.getInstance());
 
 					break;
 
 				case PanelWindow.BUTTON_8_NAME:
 
+					exitGameEvent();
+
 					break;
 
 				case PanelWindow.BUTTON_9_NAME:
+
+					closeControlPanelEvent();
 
 					break;
 
@@ -274,8 +279,10 @@ public class JustFlyControl {
 	/**
 	 * Allows to set the buttons' color.
 	 * 
-	 * @param color    The color to set.
-	 * @param settings The unique instance of the visual settings.
+	 * @param color
+	 *            The color to set.
+	 * @param settings
+	 *            The unique instance of the visual settings.
 	 */
 	private static void changeButtonColorEvent(java.awt.Color color, VisualSettings settings) {
 		settings.setColorButton(color);
@@ -284,8 +291,10 @@ public class JustFlyControl {
 	/**
 	 * Allows to set the panel's color.
 	 * 
-	 * @param color    The color to set.
-	 * @param settings The unique instance of the visual settings.
+	 * @param color
+	 *            The color to set.
+	 * @param settings
+	 *            The unique instance of the visual settings.
 	 */
 	private static void changeControlPanelColorEvent(java.awt.Color color, VisualSettings settings) {
 		settings.setColorControlPanel(color);
@@ -294,8 +303,10 @@ public class JustFlyControl {
 	/**
 	 * Allows to set the canvas' color.
 	 * 
-	 * @param color    The color to set.
-	 * @param settings The unique instance of the visual settings.
+	 * @param color
+	 *            The color to set.
+	 * @param settings
+	 *            The unique instance of the visual settings.
 	 */
 	private static void changeCanvasColorEvent(java.awt.Color color, VisualSettings settings) {
 		settings.setColorCanvas(color);
@@ -304,8 +315,10 @@ public class JustFlyControl {
 	/**
 	 * Allows to set the font's color of the buttons.
 	 * 
-	 * @param color    The color to set.
-	 * @param settings The unique instance of the visual settings.
+	 * @param color
+	 *            The color to set.
+	 * @param settings
+	 *            The unique instance of the visual settings.
 	 */
 	private static void changeButtonFontColorEvent(java.awt.Color color, VisualSettings settings) {
 		settings.setColorFontButton(color);
@@ -314,8 +327,10 @@ public class JustFlyControl {
 	/**
 	 * Allows to set the font's color of the score.
 	 * 
-	 * @param color    The color to set.
-	 * @param settings The unique instance of the visual settings.
+	 * @param color
+	 *            The color to set.
+	 * @param settings
+	 *            The unique instance of the visual settings.
 	 */
 	private static void changeScoreColorEvent(java.awt.Color color, VisualSettings settings) {
 		settings.setColorFontScore(color);
@@ -334,11 +349,26 @@ public class JustFlyControl {
 	/**
 	 * Allows to show or hide the collision shapes.
 	 * 
-	 * @param settings The current state of the game settings.
+	 * @param settings
+	 *            The current state of the game settings.
 	 */
 	private static void manageShapesActivation(VisualSettings settings) {
 		boolean current = settings.isActiveShapes();
 		settings.setActiveShapes(!current);
+	}
+
+	/**
+	 * Allows to stop and close the game.
+	 */
+	private static void exitGameEvent() {
+		System.exit(0);
+	}
+
+	/**
+	 * Allows to hide the control panel.
+	 */
+	private static void closeControlPanelEvent() {
+		panelWindow.setVisible(false);
 	}
 
 	/**
@@ -354,13 +384,13 @@ public class JustFlyControl {
 
 		// Control Panel Background
 		panelWindow.getMainPanel().setBackground(VisualSettings.getInstance().getColorControlPanel());
-
 	}
 
 	/**
 	 * Manages the up key.
 	 * 
-	 * @param pressed Indicates whether the key was pressed or released.
+	 * @param pressed
+	 *            Indicates whether the key was pressed or released.
 	 */
 	private static void upKeyEvent(boolean pressed) {
 		if (pressed) {
@@ -378,7 +408,8 @@ public class JustFlyControl {
 	/**
 	 * Manages the down key.
 	 * 
-	 * @param pressed Indicates whether the key was pressed or released.
+	 * @param pressed
+	 *            Indicates whether the key was pressed or released.
 	 */
 	private static void downKeyEvent(boolean pressed) {
 		if (pressed) {
@@ -396,7 +427,8 @@ public class JustFlyControl {
 	/**
 	 * Manages the left key.
 	 * 
-	 * @param pressed Indicates whether the key was pressed or released.
+	 * @param pressed
+	 *            Indicates whether the key was pressed or released.
 	 */
 	private static void leftKeyEvent(boolean pressed) {
 		if (pressed) {
@@ -414,7 +446,8 @@ public class JustFlyControl {
 	/**
 	 * Manages the right key.
 	 * 
-	 * @param pressed Indicates whether the key was pressed or released.
+	 * @param pressed
+	 *            Indicates whether the key was pressed or released.
 	 */
 	private static void rightKeyEvent(boolean pressed) {
 		if (pressed) {
@@ -465,8 +498,8 @@ public class JustFlyControl {
 	}
 
 	/**
-	 * Allows to obtain the constant for the non-numpad up arrow key or the desired
-	 * key for moving up the player.
+	 * Allows to obtain the constant for the non-numpad up arrow key or the
+	 * desired key for moving up the player.
 	 * 
 	 * @return The code for the up key.
 	 */

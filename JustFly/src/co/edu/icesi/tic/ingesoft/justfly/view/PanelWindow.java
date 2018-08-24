@@ -27,7 +27,7 @@ public class PanelWindow extends JFrame {
 	public static final String BUTTON_6_NAME = "Randomize Colors";
 	public static final String BUTTON_7_NAME = "Activate/De-activate Collision Shapes";
 	public static final String BUTTON_8_NAME = "Exit Game";
-	public static final String BUTTON_9_NAME = "Show/Close Panel";
+	public static final String BUTTON_9_NAME = "Close Control Panel";
 
 	/**
 	 * Default serial version.

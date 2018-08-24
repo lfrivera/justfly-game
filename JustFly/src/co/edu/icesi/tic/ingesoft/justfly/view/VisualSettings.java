@@ -41,7 +41,7 @@ public class VisualSettings {
 	private Color colorFontScore;
 	
 	/**
-	 * Indicates whether the panel is active.
+	 * Indicates whether the collision shapes are active.
 	 */
 	private boolean activeShapes;
 
@@ -52,7 +52,6 @@ public class VisualSettings {
 
 		init();
 		activeShapes = false;
-
 	}
 
 	/**
@@ -130,7 +129,5 @@ public class VisualSettings {
 	public void setActiveShapes(boolean activeShapes) {
 		this.activeShapes = activeShapes;
 	}
-	
-	
 
 }
