@@ -18,7 +18,7 @@ import co.edu.icesi.tic.ingesoft.justfly.model.Player;
 @SuppressWarnings("serial")
 public class Canvas extends JPanel{
 
-	private final boolean SHOW_SHAPES = true;
+	private boolean showShapes;
 	
 	/**
 	 * Main player of the game.
@@ -52,16 +52,17 @@ public class Canvas extends JPanel{
 	private void init()
 	{
 		setSize(getMaximumSize());
-		setBackground(Color.white);
 	}
 	
 	@Override
 	public void paintComponent(Graphics g)
 	{
+		showShapes = VisualSettings.getInstance().isActiveShapes();
 		super.paintComponent(g);
 		drawEnemies(g);
 		drawPlayer(g);
 		showScore(g);
+		setBackground(VisualSettings.getInstance().getColorCanvas());
 	}
 	
 	/**
@@ -71,7 +72,7 @@ public class Canvas extends JPanel{
 	private void drawPlayer(Graphics g)
 	{
 		g.drawImage(player.show(), player.getPosition().x, player.getPosition().y, player.getSpriteWidth(), player.getSpriteHeight(), this);
-		if(SHOW_SHAPES){
+		if(showShapes){
 		g.setColor(Color.red);
 		g.drawOval(player.getShape().getPosition().x - player.getShape().getRadius(), player.getShape().getPosition().y - player.getShape().getRadius(), player.getShape().getRadius()*2, player.getShape().getRadius()*2);
 		}
@@ -87,7 +88,7 @@ public class Canvas extends JPanel{
 		for(Enemy e:randomEnemies)
 		{
 			g.drawImage(e.show(), e.getPosition().x, e.getPosition().y, e.getWidth(), e.getHeight(), this);
-			if(SHOW_SHAPES){
+			if(showShapes){
 			g.setColor(Color.red);
 			g.drawOval(e.getShape().getPosition().x - e.getShape().getRadius(), e.getShape().getPosition().y - e.getShape().getRadius(), e.getShape().getRadius()*2, e.getShape().getRadius()*2);
 			}
@@ -96,7 +97,7 @@ public class Canvas extends JPanel{
 		for(Enemy e:fixedEnemies)
 		{
 			g.drawImage(e.show(), e.getPosition().x, e.getPosition().y, e.getWidth(), e.getHeight(), this);
-			if(SHOW_SHAPES){
+			if(showShapes){
 			g.setColor(Color.red);
 			g.drawOval(e.getShape().getPosition().x - e.getShape().getRadius(), e.getShape().getPosition().y - e.getShape().getRadius(), e.getShape().getRadius()*2, e.getShape().getRadius()*2);
 			}
@@ -105,7 +106,7 @@ public class Canvas extends JPanel{
 	
 	private void showScore(Graphics g)
 	{
-		g.setColor(Color.blue);
+		g.setColor(VisualSettings.getInstance().getColorFontScore());
 		g.setFont(new Font("ComicSans", 50, 50));
 		g.drawString("Score: "+player.getPoints(), 100, 460);
 	}
